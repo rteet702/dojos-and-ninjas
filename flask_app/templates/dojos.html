@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
 </head>
 <body>
-    <div class="containerg">
+    <div class="container">
         <div class="row">
             <div class="col">
                 <h2>New Dojo</h2>
@@ -27,7 +27,9 @@
             </div>
             <div class="col">
                 <div class="col p-3 border border-3 border-dark my-5">
-                    <a href="#">Example</a>
+                    {% for dojo in dojos %}
+                    <a href="/dojos/{{ dojo.name }}">{{ dojo.name }}</a>
+                    {% endfor %}
                 </div>
                 <p><a href="#">Add Ninja</a></p>
             </div>
