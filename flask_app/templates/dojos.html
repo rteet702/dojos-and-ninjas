@@ -8,18 +8,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
 </head>
 <body>
-    <div class="container p-3">
+    <div class="container">
         <div class="row">
             <div class="col">
                 <h2>New Dojo</h2>
+            </div>
+            <div class="col">
+                <h2>All Dojos</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col my-5 mx-3">
                 <form action="dojos/add_dojo" method="post">
                     <label for="dojo_name">Dojo Name:</label>
-                    <input type="text" name="dojo_name" id="dojo_name" class="form-control">
+                    <input type="text" name="dojo_name" id="dojo_name" class="form-control w-75 mb-3">
                     <input type="submit" value="Create" class="btn btn-primary">
                 </form>
             </div>
             <div class="col">
-                <h2>All Dojos</h2>
+                <div class="col p-3 border border-3 border-dark my-5">
+                    <a href="#">Example</a>
+                </div>
+                <p><a href="#">Add Ninja</a></p>
             </div>
         </div>
     </div>
