@@ -21,3 +21,9 @@ class Dojo:
             dojos.append(cls((dojo)))
 
         return dojos
+
+    @classmethod
+    def add_dojo(cls, data):
+        print('adding dojo')
+        query = "INSERT INTO dojos (name) VALUES (%(name)s);"
+        connectToMySQL('d-and-n').query_db(query, data)
