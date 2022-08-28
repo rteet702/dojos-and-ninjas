@@ -51,3 +51,8 @@ class Ninja:
     def update_ninja(cls, data):
         query = "UPDATE ninjas SET first_name = %(first_name)s, last_name = %(last_name)s, age=%(age)s, dojo_id=%(dojo)s WHERE id=%(id)s;"
         connectToMySQL('d-and-n').query_db(query, data)
+
+    @classmethod
+    def delete_ninja(cls, data):
+        query = "DELETE FROM ninjas WHERE id=%(id)s;"
+        connectToMySQL('d-and-n').query_db(query, data)
