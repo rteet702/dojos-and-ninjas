@@ -7,6 +7,7 @@ class Dojo:
         self.name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.ninjas = []
 
     def __repr__(self):
         return f'<Dojo> object: {self.name}'
@@ -21,6 +22,13 @@ class Dojo:
             dojos.append(cls((dojo)))
 
         return dojos
+
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM dojos WHERE id = %(id)s;"
+        result = connectToMySQL('d-and-n').query_db(query, data)
+        return cls(result[0])
+
 
     @classmethod
     def add_dojo(cls, data):

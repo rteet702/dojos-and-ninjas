@@ -1,6 +1,7 @@
 from flask import redirect, render_template, request
 from flask_app import app
 from flask_app.models.dojos import Dojo
+from flask_app.models.ninjas import Ninja
 
 
 @app.route('/dojos')
@@ -17,3 +18,12 @@ def add_dojo():
     Dojo.add_dojo(data)
 
     return redirect('/dojos')
+
+@app.route('/dojos/<id>')
+def show_dojo(id):
+    data = {
+        "id" : id
+    }
+    dojo = Dojo.get_one(data)
+    ninjas = Ninja.get_by_dojo(data)
+    return render_template('dojo_info.html', dojo=dojo, ninjas=ninjas)

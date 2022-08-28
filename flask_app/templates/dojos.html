@@ -28,10 +28,10 @@
             <div class="col">
                 <div class="col p-3 border border-3 border-dark my-5 d-flex flex-column">
                     {% for dojo in dojos %}
-                    <a href="/dojos/{{ dojo.name }}">{{ dojo.name }}</a>
+                    <a href="/dojos/{{ dojo.id }}">{{ dojo.name }}</a>
                     {% endfor %}
                 </div>
-                <p><a href="#">Add Ninja</a></p>
+                <p><a href="/ninjas">Add Ninja</a></p>
             </div>
         </div>
     </div>
