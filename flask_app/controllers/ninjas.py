@@ -20,3 +20,26 @@ def f_add_ninja():
     }
     Ninja.add_ninja(data)
     return redirect('/dojos')
+
+@app.route('/ninjas/<id>')
+def r_update_ninja(id):
+    data = {
+        'id' : id
+    }
+    ninja = Ninja.get_one(data)
+    dojos = Dojo.get_all()
+    return render_template('edit_ninja.html', ninja=ninja, dojos=dojos)
+
+@app.route('/ninjas/update', methods=['POST'])
+def f_update_ninja():
+    inbound = request.form
+    print(inbound)
+    data = {
+        'id' : inbound['id'],
+        'first_name': inbound['first_name'],
+        'last_name': inbound['last_name'],
+        'age': inbound['age'],
+        'dojo' : inbound['dojo']
+    }
+    Ninja.update_ninja(data)
+    return redirect('/dojos')

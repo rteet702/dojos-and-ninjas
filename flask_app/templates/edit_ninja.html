@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container p-3">
+        <h1>Edit a Ninja {{ ninja.id }}</h1>
+        <form action="/ninjas/update" method="post">
+            <div class="row my-5 w-100">
+                <div class="col">
+                    <input type="hidden" name="id" value="{{ ninja.id }}">
+                    <label for="first_name" class="form-label">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" placeholder="First Name" class="form-control" required>
+                    <label for="dojo" class="form-label mt-5">Dojo:</label>
+                    <select class="form-select" aria-label="Default select" name="dojo" id="dojo" required>
+                        <option selected="">Select a Dojo</option>
+                        {% for dojo in dojos: %}
+                        <option value="{{ dojo.id }}">{{ dojo.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="last_name" class="form-label">Last Name:</label>
+                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="form-control" required>
+                    <label for="age" class="form-label mt-5">Age:</label>
+                    <input type="number" name="age" id="age" placeholder="Age" class="form-control" required>
+                </div>
+            </div>
+            <input type="submit" value="Update" class="btn btn-outline-secondary">
+        </form>
+    </div>
+</body>
+</html>

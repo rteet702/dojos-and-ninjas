@@ -26,6 +26,12 @@ class Ninja:
         return ninjas
 
     @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM ninjas WHERE id= %(id)s;"
+        result = connectToMySQL('d-and-n').query_db(query, data)
+        return cls(result[0])
+
+    @classmethod
     def add_ninja(cls, data):
         query = "INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES (%(first_name)s, %(last_name)s, %(age)s, %(dojo)s);"
         connectToMySQL('d-and-n').query_db(query, data)
@@ -40,3 +46,8 @@ class Ninja:
             ninjas.append(cls(ninja))
 
         return ninjas
+    
+    @classmethod
+    def update_ninja(cls, data):
+        query = "UPDATE ninjas SET first_name = %(first_name)s, last_name = %(last_name)s, age=%(age)s, dojo_id=%(dojo)s WHERE id=%(id)s;"
+        connectToMySQL('d-and-n').query_db(query, data)
