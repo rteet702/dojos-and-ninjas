@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container p-3">
+        <h1>Edit Dojo {{ dojo.id }}</h1>
+        <form action="/dojos/edit" method="post">
+            <div class="row my-5 w-100">
+                <div class="col">
+                    <input type="hidden" name="id" value="{{ dojo.id }}">
+                    <label for="name" class="form-label">First Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{{ dojo.name }}" required>
+                </div>
+
+            </div>
+            <input type="submit" value="Update" class="btn btn-outline-secondary">
+        </form>
+        <p><a href="/dojos">Back to Dojos</a></p>
+    </div>
+</body>
+</html>

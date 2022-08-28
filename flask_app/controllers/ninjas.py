@@ -33,7 +33,6 @@ def r_update_ninja(id):
 @app.route('/ninjas/update', methods=['POST'])
 def f_update_ninja():
     inbound = request.form
-    print(inbound)
     data = {
         'id' : inbound['id'],
         'first_name': inbound['first_name'],
@@ -44,10 +43,10 @@ def f_update_ninja():
     Ninja.update_ninja(data)
     return redirect('/dojos')
 
-@app.route('/ninjas/<id>/delete')
-def f_delete_ninja(id):
+@app.route('/ninjas/<dojo_id>/<id>/delete')
+def f_delete_ninja(dojo_id, id):
     data = {
         'id' : id
     }
     Ninja.delete_ninja(data)
-    return redirect('/dojos')
+    return redirect(f'/dojos/{dojo_id}')

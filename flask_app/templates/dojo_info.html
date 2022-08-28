@@ -9,33 +9,41 @@
 </head>
 <body>
     <div class="container p-3">
-        <h1>{{ dojo.name }}</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Ninja ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for ninja in ninjas %}
-                <tr>
-                    <th scope="row">{{ ninja.id }}</th>
-                    <td>{{ ninja.first_name }}</td>
-                    <td>{{ ninja.last_name }}</td>
-                    <td>{{ ninja.age }}</td>
-                    <td>
-                        <a href="/ninjas/{{ ninja.id }}">Edit</a> |
-                        <a href="/ninjas/{{ ninja.id }}/delete">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <p><a href="/dojos">Home</a></p>
+        <div class="row">
+            <div class="col-9">
+                <h1>{{ dojo.name }}</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ninja ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ninja in ninjas %}
+                        <tr>
+                            <th scope="row">{{ ninja.id }}</th>
+                            <td>{{ ninja.first_name }}</td>
+                            <td>{{ ninja.last_name }}</td>
+                            <td>{{ ninja.age }}</td>
+                            <td>
+                                <a href="/ninjas/{{ ninja.id }}">Edit</a> |
+                                <a href="/ninjas/{{ dojo.id }}/{{ ninja.id }}/delete">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p><a href="/dojos">Home</a></p>
+            </div>
+            <div class="col d-flex align-items-start justify-content-end">
+                <p><a href="/dojos/{{ dojo.id }}/edit">Edit Dojo</a></p>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>

@@ -32,6 +32,10 @@ class Dojo:
 
     @classmethod
     def add_dojo(cls, data):
-        print('adding dojo')
         query = "INSERT INTO dojos (name) VALUES (%(name)s);"
+        connectToMySQL('d-and-n').query_db(query, data)
+
+    @classmethod
+    def edit_dojo(cls, data):
+        query = "UPDATE dojos SET name = %(name)s WHERE id = %(id)s;"
         connectToMySQL('d-and-n').query_db(query, data)
